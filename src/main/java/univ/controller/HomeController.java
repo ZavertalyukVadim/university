@@ -12,7 +12,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/")
 public class HomeController {
-    @GetMapping
+    @GetMapping(value = "/lab1")
     public String startPage(ModelMap model) {
         List<Information> list = Arrays.asList(
                 new Information("mpz-1704","Zavertalyuk Vadym","04.07.1997"),
