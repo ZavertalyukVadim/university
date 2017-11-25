@@ -1,29 +1,25 @@
 package univ.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import univ.trash.Information;
-
-import java.util.Arrays;
-import java.util.List;
+import univ.service.HomeService;
 
 @Controller
 @RequestMapping(value = "/")
 public class HomeController {
+    private final HomeService homeService;
+
+    @Autowired
+    public HomeController(HomeService homeService) {
+        this.homeService = homeService;
+    }
+
     @GetMapping(value = "/lab1")
     public String startPage(ModelMap model) {
-        List<Information> list = Arrays.asList(
-                new Information("mpz-1704","Zavertalyuk Vadym","04.07.1997"),
-                new Information("mpz-1704","Zavertalyuk Vadym","04.07.1997"),
-                new Information("mpz-1704","Zavertalyuk Vadym","04.07.1997"),
-                new Information("mpz-1704","Zavertalyuk Vadym","04.07.1997"),
-                new Information("mpz-1704","Zavertalyuk Vadym","04.07.1997"),
-                new Information("mpz-1704","Zavertalyuk Vadym","04.07.1997"),
-                new Information("mpz-1704","Zavertalyuk Vadym","04.07.1997")
-        );
-        model.addAttribute("informations", list);
+        model.addAttribute("informations", homeService.getFirstLab());
         return "home";
     }
 }
