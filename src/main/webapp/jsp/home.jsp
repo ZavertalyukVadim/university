@@ -8,8 +8,8 @@
 <body>
 <c:forEach items="${informations}" var="information">
     <h2>${information.numberOfGroup}</h2>
-    <h2>${information.pib}</h2>
-    <h2>${information.dateOfBirthday}</h2>
+    <p>${information.pib}</p>
+    <p>${information.dateOfBirthday}</p>
     <br>
 </c:forEach>
 </body>
