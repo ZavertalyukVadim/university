@@ -18,8 +18,14 @@ public class HomeController {
     }
 
     @GetMapping(value = "/lab1")
-    public String startPage(ModelMap model) {
+    public String labFirst(ModelMap model) {
         model.addAttribute("informations", homeService.getFirstLab());
-        return "home";
+        return "first";
+    }
+
+    @GetMapping(value = "/lab2")
+    public String labSecond(ModelMap model) {
+        model.addAttribute("informations", homeService.getSecondLab());
+        return "second";
     }
 }
