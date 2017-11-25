@@ -6,6 +6,11 @@
 
 </head>
 <body>
-<h1>hello</h1>
+<c:forEach items="${informations}" var="information">
+    <h2>${information.numberOfGroup}</h2>
+    <h2>${information.pib}</h2>
+    <h2>${information.dateOfBirthday}</h2>
+    <br>
+</c:forEach>
 </body>
 </html>
