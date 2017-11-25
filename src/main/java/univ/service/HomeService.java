@@ -1,13 +1,21 @@
 package univ.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import univ.trash.Information;
+import univ.trash.MailClient;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class HomeService {
+    private final MailClient mailClient;
+
+    @Autowired
+    public HomeService(MailClient mailClient) {
+        this.mailClient = mailClient;
+    }
 
     public List<Information> getFirstLab() {
         return Arrays.asList(
@@ -45,5 +53,9 @@ public class HomeService {
                 new Information("mpz-1704","19","25.11.2017"),
                 new Information("mpz-1704","20","25.11.2017")
         );
+    }
+
+    public void getThirdLab(String email,String title, String text) {
+        mailClient.sendMail(email, title, text);
     }
 }

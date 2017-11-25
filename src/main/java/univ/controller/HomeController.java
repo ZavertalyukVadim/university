@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import univ.service.HomeService;
 
 @Controller
@@ -27,5 +28,13 @@ public class HomeController {
     public String labSecond(ModelMap model) {
         model.addAttribute("informations", homeService.getSecondLab());
         return "second";
+    }
+
+    @GetMapping(value = "/lab3")
+    public String labThird(@RequestParam("email") String email,
+                           @RequestParam("title") String title,
+                           @RequestParam("text") String text) {
+        homeService.getThirdLab(email, title, text);
+        return "third";
     }
 }
