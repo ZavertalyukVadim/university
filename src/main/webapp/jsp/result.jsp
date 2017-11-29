@@ -6,10 +6,8 @@
 
 </head>
 <body>
-<form  action="/add" method="post">
-    <input type="text" name="first"  required><br>
-    <input type="text" name="second" required><br>
-    <input type="submit" value="Send numbers"><br>
-</form>
+
+    <h2>${result}</h2>
+
 </body>
 </html>

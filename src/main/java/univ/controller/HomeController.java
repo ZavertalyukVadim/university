@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import univ.service.HomeService;
@@ -37,23 +38,55 @@ public class HomeController {
     }
 
     @GetMapping(value = "/")
-    public String home(){
+    public String home() {
         return "weblLab4";
     }
+
     @GetMapping(value = "/add")
-    public String add(){
+    public String add() {
         return "add";
     }
+
     @GetMapping(value = "/subtract")
-    public String subtract(){
+    public String subtract() {
         return "subtract";
     }
+
     @GetMapping(value = "/multiply")
-    public String multiply(){
+    public String multiply() {
         return "multiply";
     }
+
     @GetMapping(value = "/divide")
-    public String divide(){
+    public String divide() {
         return "divide";
+    }
+
+    @PostMapping(value = "/add")
+    public String resultForAdd(@RequestParam("first") Integer first,
+                               @RequestParam("second") Integer second,ModelMap model) {
+        model.addAttribute("result", first+second);
+        return "result";
+    }
+
+    @PostMapping(value = "/subtract")
+    public String resultForSubtract(@RequestParam("first") Integer first,
+                                    @RequestParam("second") Integer second,ModelMap model) {
+        model.addAttribute("result", first-second);
+        return "result";
+    }
+
+    @PostMapping(value = "/multiply")
+    public String resultForMultiply(@RequestParam("first") Integer first,
+                                    @RequestParam("second") Integer second,ModelMap model) {
+        model.addAttribute("result", first*second);
+        return "result";
+    }
+
+    @PostMapping(value = "/divide")
+    public String resultForDivide(@RequestParam("first") Integer first,
+                                  @RequestParam("second") Integer second,ModelMap model) {
+        model.addAttribute("result", first/second);
+        return "result";
     }
 }

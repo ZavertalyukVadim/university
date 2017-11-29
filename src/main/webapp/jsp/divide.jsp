@@ -6,6 +6,10 @@
 
 </head>
 <body>
-
+<form  action="/divide" method="post">
+    <input type="text" name="first"  required><br>
+    <input type="text" name="second" required><br>
+    <input type="submit" value="Send numbers"><br>
+</form>
 </body>
 </html>
