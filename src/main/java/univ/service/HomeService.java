@@ -10,12 +10,12 @@ import java.util.List;
 
 @Service
 public class HomeService {
-    private final MailClient mailClient;
-
-    @Autowired
-    public HomeService(MailClient mailClient) {
-        this.mailClient = mailClient;
-    }
+//    private final MailClient mailClient;
+//
+//
+//    public HomeService(MailClient mailClient) {
+//        this.mailClient = mailClient;
+//    }
 
     public List<Information> getFirstLab() {
         return Arrays.asList(
@@ -55,7 +55,7 @@ public class HomeService {
         );
     }
 
-    public void getThirdLab(String email,String title, String text) {
-        mailClient.sendMail(email, title, text);
-    }
+//    public void getThirdLab(String email,String title, String text) {
+//        mailClient.sendMail(email, title, text);
+//    }
 }

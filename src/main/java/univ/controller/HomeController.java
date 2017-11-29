@@ -31,10 +31,29 @@ public class HomeController {
     }
 
     @GetMapping(value = "/lab3")
-    public String labThird(@RequestParam("email") String email,
-                           @RequestParam("title") String title,
-                           @RequestParam("text") String text) {
-        homeService.getThirdLab(email, title, text);
+    public String labThird() {
+//        homeService.getThirdLab(email, title, text);
         return "third";
+    }
+
+    @GetMapping(value = "/")
+    public String home(){
+        return "weblLab4";
+    }
+    @GetMapping(value = "/add")
+    public String add(){
+        return "add";
+    }
+    @GetMapping(value = "/subtract")
+    public String subtract(){
+        return "subtract";
+    }
+    @GetMapping(value = "/multiply")
+    public String multiply(){
+        return "multiply";
+    }
+    @GetMapping(value = "/divide")
+    public String divide(){
+        return "divide";
     }
 }
