@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import univ.service.HomeService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/")
 public class HomeController {
     private final HomeService homeService;
+    private static List<String> list = new ArrayList<>();
 
     @Autowired
     public HomeController(HomeService homeService) {
@@ -88,5 +92,17 @@ public class HomeController {
                                   @RequestParam("second") Integer second,ModelMap model) {
         model.addAttribute("result", first/second);
         return "result";
+    }
+    @GetMapping(value = "/massage")
+    public String viewChat(ModelMap model){
+        model.addAttribute("lists", list);
+        return "chat";
+    }
+
+    @PostMapping(value = "/massage")
+    public String chat(@RequestParam("massage") String massage,ModelMap model){
+        list.add(massage);
+        model.addAttribute("lists", list);
+        return "chat";
     }
 }
