@@ -3,10 +3,8 @@ package univ.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import univ.Dto;
 import univ.service.HomeService;
 
 import java.util.ArrayList;
@@ -18,6 +16,7 @@ import java.util.List;
 public class HomeController {
     private final HomeService homeService;
     private static List<String> list = new ArrayList<>();
+    private static List<Dto> strings = new ArrayList<>();
 
     @Autowired
     public HomeController(HomeService homeService) {
@@ -124,8 +123,11 @@ public class HomeController {
     }
 
     @PostMapping(value = "/json")
-    public String getJsonForJsonPage(ModelMap model) {
-//        model.addAttribute("date", new Date());
+    @ResponseBody
+    public String getJsonForJsonPage(@RequestBody List<Dto> string, ModelMap model) {
+        System.out.println(string);
+        strings.addAll(string);
+        model.addAttribute("lists", strings);
         return "json";
     }
 }
