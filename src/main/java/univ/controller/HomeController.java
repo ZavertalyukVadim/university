@@ -117,4 +117,15 @@ public class HomeController {
         model.addAttribute("date", new Date());
         return "date";
     }
+
+    @GetMapping(value = "/json")
+    public String getPageForJson() {
+        return "json";
+    }
+
+    @PostMapping(value = "/json")
+    public String getJsonForJsonPage(ModelMap model) {
+//        model.addAttribute("date", new Date());
+        return "json";
+    }
 }
