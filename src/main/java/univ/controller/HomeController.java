@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import univ.service.HomeService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -104,5 +105,16 @@ public class HomeController {
         list.add(massage);
         model.addAttribute("lists", list);
         return "chat";
+    }
+
+    @GetMapping(value = "/date")
+    public String getPageForDate() {
+        return "date";
+    }
+
+    @PostMapping(value = "/date")
+    public String getDateForDatePage(ModelMap model) {
+        model.addAttribute("date", new Date());
+        return "date";
     }
 }
