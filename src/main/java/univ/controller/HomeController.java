@@ -68,39 +68,40 @@ public class HomeController {
 
     @PostMapping(value = "/add")
     public String resultForAdd(@RequestParam("first") Integer first,
-                               @RequestParam("second") Integer second,ModelMap model) {
-        model.addAttribute("result", first+second);
+                               @RequestParam("second") Integer second, ModelMap model) {
+        model.addAttribute("result", first + second);
         return "result";
     }
 
     @PostMapping(value = "/subtract")
     public String resultForSubtract(@RequestParam("first") Integer first,
-                                    @RequestParam("second") Integer second,ModelMap model) {
-        model.addAttribute("result", first-second);
+                                    @RequestParam("second") Integer second, ModelMap model) {
+        model.addAttribute("result", first - second);
         return "result";
     }
 
     @PostMapping(value = "/multiply")
     public String resultForMultiply(@RequestParam("first") Integer first,
-                                    @RequestParam("second") Integer second,ModelMap model) {
-        model.addAttribute("result", first*second);
+                                    @RequestParam("second") Integer second, ModelMap model) {
+        model.addAttribute("result", first * second);
         return "result";
     }
 
     @PostMapping(value = "/divide")
     public String resultForDivide(@RequestParam("first") Integer first,
-                                  @RequestParam("second") Integer second,ModelMap model) {
-        model.addAttribute("result", first/second);
+                                  @RequestParam("second") Integer second, ModelMap model) {
+        model.addAttribute("result", first / second);
         return "result";
     }
+
     @GetMapping(value = "/massage")
-    public String viewChat(ModelMap model){
+    public String viewChat(ModelMap model) {
         model.addAttribute("lists", list);
         return "chat";
     }
 
     @PostMapping(value = "/massage")
-    public String chat(@RequestParam("massage") String massage,ModelMap model){
+    public String chat(@RequestParam("massage") String massage, ModelMap model) {
         list.add(massage);
         model.addAttribute("lists", list);
         return "chat";
@@ -118,15 +119,15 @@ public class HomeController {
     }
 
     @GetMapping(value = "/json")
-    public String getPageForJson() {
+    public String getPageForJson(ModelMap model) {
+        model.addAttribute("lists", strings);
         return "json";
     }
 
     @PostMapping(value = "/json")
-    @ResponseBody
-    public String getJsonForJsonPage(@RequestBody List<Dto> string, ModelMap model) {
-        System.out.println(string);
-        strings.addAll(string);
+    public String getJsonForJsonPage(@RequestBody Dto string, ModelMap model) {
+        System.out.println(string.getValue());
+        strings.add(string);
         model.addAttribute("lists", strings);
         return "json";
     }

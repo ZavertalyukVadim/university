@@ -10,6 +10,7 @@
             var values = {
                 value:text
             };
+            alert(values);
             var myJsonString = JSON.stringify(values);
             alert(myJsonString);
             $.ajax({
